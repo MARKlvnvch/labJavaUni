@@ -1,9 +1,8 @@
-import org.example.Package;
-import org.example.PackageWeightProduct;
+import products.Package;
+import products.PackageWeightProduct;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeAll;
 
 public class PackageWeightProductTest {
 

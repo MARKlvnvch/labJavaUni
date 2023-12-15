@@ -1,8 +1,8 @@
-package org.example;
+package products;
 
-import java.util.Objects;
+import Interface.Filter;
 
-public class CheckEntersFilter implements Filter{
+public class CheckEntersFilter implements Filter {
 
 
     public CheckEntersFilter(){}

@@ -1,5 +1,4 @@
-import org.example.BeginStringFilter;
-import org.example.CheckEntersFilter;
+import products.CheckEntersFilter;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

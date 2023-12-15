@@ -1,6 +1,8 @@
-package org.example;
+package products;
 
-public class CheckLengthFilter implements Filter{
+import Interface.Filter;
+
+public class CheckLengthFilter implements Filter {
 
     public CheckLengthFilter(){}
 

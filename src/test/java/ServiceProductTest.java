@@ -1,8 +1,8 @@
-import org.example.*;
-import org.example.Package;
+import products.*;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import products.Package;
 
 public class ServiceProductTest {
 
@@ -49,13 +49,13 @@ public class ServiceProductTest {
     @Test
     public void countByFilterDeep() {
         Assert.assertEquals(3, ServiceProduct.countByFilterDeep(set2, filterLength));
-        Assert.assertEquals(1, ServiceProduct.countByFilterDeep(set2, filterEnters));
+        Assert.assertEquals(2, ServiceProduct.countByFilterDeep(set2, filterEnters));
     }
 
     @Test
     public void checkAllWeighted() {
-        Assert.assertEquals(true, ServiceProduct.checkAllWeighted(setWeightPackage));
-        Assert.assertEquals(false, ServiceProduct.checkAllWeighted(gunsPackage));
+        Assert.assertEquals(false, ServiceProduct.checkAllWeighted(set1));
+        Assert.assertEquals(false, ServiceProduct.checkAllWeighted(set2));
     }
 
 }

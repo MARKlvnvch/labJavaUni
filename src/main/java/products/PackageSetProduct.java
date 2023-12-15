@@ -1,4 +1,6 @@
-package org.example;
+package products;
+
+import Interface.PackageProduct;
 
 import java.util.Arrays;
 import java.util.Objects;
@@ -6,12 +8,11 @@ import java.util.Objects;
 public class PackageSetProduct implements PackageProduct {
 
     private String name;
-
     private Package pack;
     private PackageProduct[] setProduct;
 
     // конструктор по массиву товаров, описанию и упаковке
-    public PackageSetProduct(String name, Package pack, PackageProduct ...setProduct) {
+    public PackageSetProduct(String name, Package pack, PackageProduct ...setProduct) { //varArgs
         this.name = name;
         this.setProduct = setProduct;
         this.pack = pack;

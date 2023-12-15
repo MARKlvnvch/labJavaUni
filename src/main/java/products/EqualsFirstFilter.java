@@ -1,18 +1,20 @@
-package org.example;
+package products;
+
+import Interface.Filter;
 
 import java.util.Objects;
 
-public class BeginStringFilter implements Filter{
+public class EqualsFirstFilter implements Filter {
 
     private String pattern;
 
-    public BeginStringFilter(String pattern) {
+    public EqualsFirstFilter(String pattern) {
         this.pattern = pattern;
     }
 
     @Override
     public boolean apply(String str) {
-        return str.substring(0, pattern.length()).equals(pattern);
+        return str.substring(0, 1).equals(pattern.substring(0,1));
     }
 
     public String getPattern() {
@@ -27,7 +29,7 @@ public class BeginStringFilter implements Filter{
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        BeginStringFilter that = (BeginStringFilter) o;
+        EqualsFirstFilter that = (EqualsFirstFilter) o;
         return Objects.equals(pattern, that.pattern);
     }
 

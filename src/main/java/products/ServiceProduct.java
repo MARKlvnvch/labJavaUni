@@ -1,4 +1,7 @@
-package org.example;
+package products;
+
+import Interface.Filter;
+import Interface.PackageProduct;
 
 public class ServiceProduct{
 
@@ -52,24 +55,9 @@ public class ServiceProduct{
 
                 // проверяем принадлежность элемента массива к классу PackageSetProduct
             } else if (product instanceof PackageSetProduct filterSet) {
-                // если элемент действительно является набором, то проверяем имя
-                if (filter.apply(filterSet.getName())) {
+                if (recursionFilterDeep(filterSet, filter)) {
                     count++;
                 }
-
-                // заменяем на массив продуктов из Набора товаров
-                products = filterSet.getSetProduct();
-
-                // перебираем новый массив
-                for (PackageProduct product1: products) {
-                    if (product1 instanceof Package dblProduct) {
-                        if (filter.apply(dblProduct.getName())) {
-                            count++;
-                        }
-                    }
-                }
-
-
             }
 
         }
@@ -78,14 +66,59 @@ public class ServiceProduct{
 
     }
 
-    public static boolean checkAllWeighted(PackageSetProduct setProducts) {
+    public static boolean recursionFilterDeep(PackageSetProduct set, Filter filter) {
 
-        PackageProduct[] products = setProducts.getSetProduct();
+        PackageProduct[] setProducts = set.getSetProduct();
 
-        for (PackageProduct product: products) {
-            if (!(product instanceof WeightProduct)) {
-                return false;
+        // перебираем массив продуктов
+        for (PackageProduct product : setProducts) {
+
+            // если элемент является Товаром
+            if (product instanceof Product productNamed) {
+                if (filter.apply(productNamed.getName())) {
+                    return true;
+                }
+                // если элемент является Набором Упакованных товаров
+            } else if (product instanceof PackageSetProduct deepSet) {
+                // переходим на следующий уровень "глубины"
+                if (recursionFilterDeep(deepSet, filter)) {
+                    return true;
+                }
             }
+
+        }
+
+        return false;
+
+    }
+
+    // рекурсия
+    //массив аргументов
+
+    public static boolean checkAllWeighted(SetProduct setProducts) {
+        PackageProduct[] products = setProducts.getSetProduct();
+        return recursionWeight(products);
+    }
+
+    public static boolean recursionWeight(PackageProduct[] products) {
+
+        // перебираем массив продуктов
+        for (PackageProduct product: products) {
+
+            // если продукт не является весовым
+            if (!(product instanceof WeightProduct)) {
+
+                // проверяем является ли товар Упакованным набором товаров
+                if (product instanceof PackageSetProduct deepSet) {
+                    PackageProduct[] deepSetProduct = deepSet.getSetProduct();
+                    // если является, то вызываем функцию снова чтобы перейти на следующий уровень "глубины"
+                    if (!recursionWeight(deepSetProduct)) {
+                        return false;
+                    }
+                } else return false;
+
+            }
+
         }
 
         return true;

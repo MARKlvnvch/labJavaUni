@@ -1,6 +1,5 @@
-import org.example.Package;
-import org.example.PackagePieceProduct;
-import org.example.PackageWeightProduct;
+import products.Package;
+import products.PackagePieceProduct;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

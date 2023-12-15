@@ -1,10 +1,11 @@
-package org.example;
+package products;
+
+import Interface.PackageProduct;
 
 import java.util.Objects;
 
 public class PackagePieceProduct extends PieceProduct implements PackageProduct {
 
-    // TODO implement getName()
 
     private Package pack;
     private int count;

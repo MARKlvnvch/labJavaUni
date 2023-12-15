@@ -1,5 +1,4 @@
-import org.example.*;
-import org.example.Package;
+import products.BeginStringFilter;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

@@ -1,4 +1,6 @@
-package org.example;
+package products;
+
+import Interface.PackageProduct;
 
 import java.util.Arrays;
 import java.util.Objects;

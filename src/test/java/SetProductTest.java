@@ -1,8 +1,8 @@
-import org.example.*;
-import org.example.Package;
+import products.*;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import products.Package;
 
 public class SetProductTest {
 
