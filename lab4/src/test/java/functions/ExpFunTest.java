@@ -1,7 +1,5 @@
 package functions;
 
-import functions.ExpFun;
-import org.example.QuadraticEquation;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
