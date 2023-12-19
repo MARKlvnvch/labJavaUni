@@ -8,31 +8,33 @@ public class ServiceProductTest {
 
     private static SetProduct set1;
     private static SetProduct set2;
+    private static SetProduct set3;
     private static CheckLengthFilter filterLength;
     private static CheckEntersFilter filterEnters;
     private static PackageSetProduct setWeightPackage;
-    private static PackageSetProduct gunsPackage;
+    private static PackageSetProduct bananasPackage;
 
     @Before
     public void creation() {
 
         Package pack = new Package("pack", 1);
 
-        Product smallGun = new Product("small gun", "dirty small gun");
+        Product smallBananas = new Product("small Bananas", "dirty small gun");
 
-        WeightProduct gun = new WeightProduct("gun", "simple gun");
-        PieceProduct shotgun = new PieceProduct("shotgun", "simple shotguns", 10);
-        PieceProduct uzi = new PieceProduct(smallGun, 10);
+        WeightProduct bananas = new WeightProduct("Bananas", "simple gun");
+        PieceProduct blackBananas = new PieceProduct("blackBananas", "simple shotguns", 10);
+        PieceProduct greenBananas = new PieceProduct(smallBananas, 10);
 
-        PackageWeightProduct gunInPack = new PackageWeightProduct(gun, pack, 100);
-        PackagePieceProduct shotgunInPack = new PackagePieceProduct(shotgun, pack, 10);
-        PackagePieceProduct uziInPack = new PackagePieceProduct(uzi, pack, 999);
+        PackageWeightProduct bananasInPack = new PackageWeightProduct(bananas, pack, 100);
+        PackagePieceProduct blackBananasInPack = new PackagePieceProduct(blackBananas, pack, 10);
+        PackagePieceProduct greenBananasInPack = new PackagePieceProduct(greenBananas, pack, 999);
 
-        gunsPackage = new PackageSetProduct("gunsPackage",pack, gunInPack, shotgunInPack, uziInPack);
-        setWeightPackage = new PackageSetProduct("setWeightPackage",pack, gunInPack);
+        bananasPackage = new PackageSetProduct("gunsPackage", pack, bananasInPack, blackBananasInPack, greenBananasInPack);
+        setWeightPackage = new PackageSetProduct("setWeightPackage",pack, bananasInPack);
 
-        set1 = new SetProduct("set guns", gunInPack, shotgunInPack, uziInPack);
-        set2 = new SetProduct("set2 guns", gunsPackage, gunInPack, shotgunInPack, uziInPack);
+        set1 = new SetProduct("set guns", bananasInPack, blackBananasInPack, greenBananasInPack);
+        set2 = new SetProduct("set2 guns", bananasPackage, bananasInPack, blackBananasInPack, greenBananasInPack);
+        set3 = new SetProduct("set2 guns", bananasInPack, bananasInPack);
 
         filterLength = new CheckLengthFilter();
         filterEnters = new CheckEntersFilter();
@@ -54,8 +56,10 @@ public class ServiceProductTest {
 
     @Test
     public void checkAllWeighted() {
-        Assert.assertEquals(false, ServiceProduct.checkAllWeighted(set1));
-        Assert.assertEquals(false, ServiceProduct.checkAllWeighted(set2));
+        Assert.assertFalse(ServiceProduct.checkAllWeighted(set1));
+        Assert.assertFalse(ServiceProduct.checkAllWeighted(set2));
+        Assert.assertTrue(ServiceProduct.checkAllWeighted(set3));
+        System.out.println(set3.getSetProduct().length);
     }
 
 }
