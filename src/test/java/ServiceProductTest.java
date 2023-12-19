@@ -11,8 +11,6 @@ public class ServiceProductTest {
     private static SetProduct set3;
     private static CheckLengthFilter filterLength;
     private static CheckEntersFilter filterEnters;
-    private static PackageSetProduct setWeightPackage;
-    private static PackageSetProduct bananasPackage;
 
     @Before
     public void creation() {
@@ -29,8 +27,9 @@ public class ServiceProductTest {
         PackagePieceProduct blackBananasInPack = new PackagePieceProduct(blackBananas, pack, 10);
         PackagePieceProduct greenBananasInPack = new PackagePieceProduct(greenBananas, pack, 999);
 
-        bananasPackage = new PackageSetProduct("gunsPackage", pack, bananasInPack, blackBananasInPack, greenBananasInPack);
-        setWeightPackage = new PackageSetProduct("setWeightPackage",pack, bananasInPack);
+        //private static PackageSetProduct setWeightPackage;
+        PackageSetProduct bananasPackage = new PackageSetProduct("gunsPackage", pack, bananasInPack, blackBananasInPack, greenBananasInPack);
+        //setWeightPackage = new PackageSetProduct("setWeightPackage",pack, bananasInPack);
 
         set1 = new SetProduct("set guns", bananasInPack, blackBananasInPack, greenBananasInPack);
         set2 = new SetProduct("set2 guns", bananasPackage, bananasInPack, blackBananasInPack, greenBananasInPack);
