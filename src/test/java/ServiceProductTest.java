@@ -17,10 +17,10 @@ public class ServiceProductTest {
 
         Package pack = new Package("pack", 1);
 
-        Product smallBananas = new Product("small Bananas", "dirty small gun");
+        Product smallBananas = new Product("small Bananas", "smallBananas desc");
 
-        WeightProduct bananas = new WeightProduct("Bananas", "simple gun");
-        PieceProduct blackBananas = new PieceProduct("blackBananas", "simple shotguns", 10);
+        WeightProduct bananas = new WeightProduct("Bananas", "simple bananas");
+        PieceProduct blackBananas = new PieceProduct("blackBananas", "simple blackBananas", 10);
         PieceProduct greenBananas = new PieceProduct(smallBananas, 10);
 
         PackageWeightProduct bananasInPack = new PackageWeightProduct(bananas, pack, 100);
@@ -28,12 +28,12 @@ public class ServiceProductTest {
         PackagePieceProduct greenBananasInPack = new PackagePieceProduct(greenBananas, pack, 999);
 
         //private static PackageSetProduct setWeightPackage;
-        PackageSetProduct bananasPackage = new PackageSetProduct("gunsPackage", pack, bananasInPack, blackBananasInPack, greenBananasInPack);
+        PackageSetProduct bananasPackage = new PackageSetProduct("bananas", pack, bananasInPack, blackBananasInPack, greenBananasInPack);
         //setWeightPackage = new PackageSetProduct("setWeightPackage",pack, bananasInPack);
 
-        set1 = new SetProduct("set guns", bananasInPack, blackBananasInPack, greenBananasInPack);
-        set2 = new SetProduct("set2 guns", bananasPackage, bananasInPack, blackBananasInPack, greenBananasInPack);
-        set3 = new SetProduct("set2 guns", bananasInPack, bananasInPack);
+        set1 = new SetProduct("set bananas", bananasInPack, blackBananasInPack, greenBananasInPack);
+        set2 = new SetProduct("set2 bananas", bananasPackage, bananasInPack, blackBananasInPack, greenBananasInPack);
+        set3 = new SetProduct("set2 bananas", bananasInPack, bananasInPack);
 
         filterLength = new CheckLengthFilter();
         filterEnters = new CheckEntersFilter();
