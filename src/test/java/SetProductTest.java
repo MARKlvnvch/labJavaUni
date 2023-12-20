@@ -16,10 +16,10 @@ public class SetProductTest {
         WeightProduct whiteSnikers = new WeightProduct("whiteSnikers", "blueSnikers tasty");
         PieceProduct blueSnikers = new PieceProduct("blueSnikers","blueSnikers tasty", 87);
 
-        PackageWeightProduct fatMichal = new PackageWeightProduct(whiteSnikers, pack, 102);
-        PackagePieceProduct Johns = new PackagePieceProduct(blueSnikers, pack, 3);
+        PackageWeightProduct PackageWhiteSnikers = new PackageWeightProduct(whiteSnikers, pack, 102);
+        PackagePieceProduct PackageBlueSnikers = new PackagePieceProduct(blueSnikers, pack, 3);
 
-        snikers = new SetProduct("set Snikersis", fatMichal, Johns);
+        snikers = new SetProduct("set Snikersis", PackageBlueSnikers, PackageWhiteSnikers);
 
     }
 
