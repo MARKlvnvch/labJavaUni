@@ -1,8 +1,5 @@
 package functions;
 
-import functions.LinearFun;
-import functions.RatFun;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
@@ -21,13 +18,13 @@ public class RatFunTest {
     // исключение
     @Test
     public void exception() {
-        Throwable exception = Assertions.assertThrows(IllegalArgumentException.class, ()-> function1.fun(90));
+        Assertions.assertThrows(IllegalArgumentException.class, ()-> function1.fun(90));
     }
 
     // знаменатель ноль
     @Test
     public void solution2() {
-        Throwable exception = Assertions.assertThrows(IllegalArgumentException.class, ()-> function2.fun(90));
+        Assertions.assertThrows(IllegalArgumentException.class, ()-> function2.fun(90));
     }
 
 }

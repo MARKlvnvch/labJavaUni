@@ -1,7 +1,5 @@
 package functions;
 
-import functions.RatFun;
-import functions.TrigFun;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,7 +22,7 @@ public class TrigFunTest {
     // тест на исключение
     @Test
     public void exception() {
-        Throwable exception = Assertions.assertThrows(IllegalArgumentException.class, ()-> function1.fun(90));
+        Assertions.assertThrows(IllegalArgumentException.class, ()-> function1.fun(90));
     }
 
 }

@@ -23,7 +23,7 @@ public class ExpFunTest {
     // исключение
     @Test
     public void exception() {
-        Throwable exception = Assertions.assertThrows(IllegalArgumentException.class, ()-> function1.fun(90));
+        Assertions.assertThrows(IllegalArgumentException.class, ()-> function1.fun(90));
     }
 
     // когда степень не нулевая
