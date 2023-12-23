@@ -6,32 +6,32 @@ import products.Package;
 
 public class PackageSetProductTest {
 
-    private static PackageSetProduct snikers;
+    private static PackageSetProduct fruits;
 
     @Before
     public void creation() {
 
-        Package pack = new Package("SnikersPack", 1);
-        Package bigSnikersPack = new Package("bigSnikersPack", 32);
+        Package pack = new Package("pack", 1);
+        Package bigFruitsPack = new Package("bigFruitsPack", 32);
 
-        WeightProduct classicSnikers = new WeightProduct("classicSnikers", "classicSnikers desc");
-        PieceProduct whiteSnikers = new PieceProduct("whiteSnikers","whiteSnikers desc", 87);
+        WeightProduct apple = new WeightProduct("apple", "red apple");
+        PieceProduct pineapple = new PieceProduct("pineapple","yellow pineapple", 87);
 
-        PackageWeightProduct hugeClassicSnikers = new PackageWeightProduct(classicSnikers, pack, 102);
-        PackagePieceProduct whiteSnikersis = new PackagePieceProduct(whiteSnikers, pack, 3);
+        PackageWeightProduct boxWithApple = new PackageWeightProduct(apple, pack, 102);
+        PackagePieceProduct boxWithPineapple = new PackagePieceProduct(pineapple, pack, 3);
 
-        snikers = new PackageSetProduct("snikers",bigSnikersPack, hugeClassicSnikers, whiteSnikersis);
+        fruits = new PackageSetProduct("fruits",bigFruitsPack, boxWithApple, boxWithPineapple);
 
     }
 
     @Test
     public void getNetto() {
-        Assert.assertEquals(365, snikers.getNetto());
+        Assert.assertEquals(365, fruits.getNetto());
     }
 
     @Test
     public void getBrutto() {
-        Assert.assertEquals(397, snikers.getBrutto());
+        Assert.assertEquals(397, fruits.getBrutto());
     }
 
 }

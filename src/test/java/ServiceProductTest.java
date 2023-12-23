@@ -17,23 +17,21 @@ public class ServiceProductTest {
 
         Package pack = new Package("pack", 1);
 
-        Product smallBananas = new Product("small Bananas", "smallBananas desc");
+        Product chocolate = new Product("chocolate", "simple chocolate");
 
-        WeightProduct bananas = new WeightProduct("Bananas", "simple bananas");
-        PieceProduct blackBananas = new PieceProduct("blackBananas", "simple blackBananas", 10);
-        PieceProduct greenBananas = new PieceProduct(smallBananas, 10);
+        WeightProduct darkChocolate = new WeightProduct("darkChocolate", "weight darkChocolate");
+        PieceProduct milkChocolate = new PieceProduct("milkChocolate", "weight milkChocolate", 10);
+        PieceProduct chocolateWithNuts = new PieceProduct(chocolate, 10);
 
-        PackageWeightProduct bananasInPack = new PackageWeightProduct(bananas, pack, 100);
-        PackagePieceProduct blackBananasInPack = new PackagePieceProduct(blackBananas, pack, 10);
-        PackagePieceProduct greenBananasInPack = new PackagePieceProduct(greenBananas, pack, 999);
+        PackageWeightProduct darkChocolateInPack = new PackageWeightProduct(darkChocolate, pack, 100);
+        PackagePieceProduct milkChocolateInPack = new PackagePieceProduct(milkChocolate, pack, 10);
+        PackagePieceProduct chocolateWithNutsInPack = new PackagePieceProduct(chocolateWithNuts, pack, 999);
 
-        //private static PackageSetProduct setWeightPackage;
-        PackageSetProduct bananasPackage = new PackageSetProduct("bananas", pack, bananasInPack, blackBananasInPack, greenBananasInPack);
-        //setWeightPackage = new PackageSetProduct("setWeightPackage",pack, bananasInPack);
+        PackageSetProduct boxWithChocolate = new PackageSetProduct("boxWithChocolate", pack, darkChocolateInPack, milkChocolateInPack, chocolateWithNutsInPack);
 
-        set1 = new SetProduct("set bananas", bananasInPack, blackBananasInPack, greenBananasInPack);
-        set2 = new SetProduct("set2 bananas", bananasPackage, bananasInPack, blackBananasInPack, greenBananasInPack);
-        set3 = new SetProduct("set2 bananas", bananasInPack, bananasInPack);
+        set1 = new SetProduct("set of package products", darkChocolateInPack, milkChocolateInPack, chocolateWithNutsInPack);
+        set2 = new SetProduct("set with SetProductPackage", boxWithChocolate, darkChocolateInPack, milkChocolateInPack, chocolateWithNutsInPack);
+        set3 = new SetProduct("set of darkChocolateInPack", darkChocolateInPack, darkChocolateInPack);
 
         filterLength = new CheckLengthFilter();
         filterEnters = new CheckEntersFilter();
@@ -43,14 +41,14 @@ public class ServiceProductTest {
 
     @Test
     public void countByFilter() {
-        Assert.assertEquals(2, ServiceProduct.countByFilter(set1, filterLength));
-        Assert.assertEquals(1, ServiceProduct.countByFilter(set1, filterEnters));
+        Assert.assertEquals(1, ServiceProduct.countByFilter(set1, filterLength));
+        Assert.assertEquals(0, ServiceProduct.countByFilter(set1, filterEnters));
     }
 
     @Test
     public void countByFilterDeep() {
-        Assert.assertEquals(3, ServiceProduct.countByFilterDeep(set2, filterLength));
-        Assert.assertEquals(2, ServiceProduct.countByFilterDeep(set2, filterEnters));
+        Assert.assertEquals(2, ServiceProduct.countByFilterDeep(set2, filterLength));
+        Assert.assertEquals(0, ServiceProduct.countByFilterDeep(set2, filterEnters));
     }
 
     @Test
@@ -58,7 +56,6 @@ public class ServiceProductTest {
         Assert.assertFalse(ServiceProduct.checkAllWeighted(set1));
         Assert.assertFalse(ServiceProduct.checkAllWeighted(set2));
         Assert.assertTrue(ServiceProduct.checkAllWeighted(set3));
-        System.out.println(set3.getSetProduct().length);
     }
 
 }

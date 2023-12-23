@@ -6,26 +6,26 @@ import products.Package;
 
 public class SetProductTest {
 
-    private static SetProduct snikers;
+    private static SetProduct pencils;
 
     @Before
     public void creation() {
 
-        Package pack = new Package("SnikersPack", 1);
+        Package pack = new Package("pencilPack", 1);
 
-        WeightProduct whiteSnikers = new WeightProduct("whiteSnikers", "blueSnikers tasty");
-        PieceProduct blueSnikers = new PieceProduct("blueSnikers","blueSnikers tasty", 87);
+        WeightProduct simplePencil = new WeightProduct("simplePencil", "weight simplePencil");
+        PieceProduct colorPencil = new PieceProduct("colorPencil","piece colorPencil", 87);
 
-        PackageWeightProduct PackageWhiteSnikers = new PackageWeightProduct(whiteSnikers, pack, 102);
-        PackagePieceProduct PackageBlueSnikers = new PackagePieceProduct(blueSnikers, pack, 3);
+        PackageWeightProduct simplePencilInPack = new PackageWeightProduct(simplePencil, pack, 102);
+        PackagePieceProduct colorPencilInPack = new PackagePieceProduct(colorPencil, pack, 3);
 
-        snikers = new SetProduct("set Snikersis", PackageBlueSnikers, PackageWhiteSnikers);
+        pencils = new SetProduct("set of pencils", colorPencilInPack, simplePencilInPack);
 
     }
 
     @Test
     public void getWeight() {
-        Assert.assertEquals(365, snikers.getWeight());
+        Assert.assertEquals(365, pencils.getWeight());
     }
 
 }

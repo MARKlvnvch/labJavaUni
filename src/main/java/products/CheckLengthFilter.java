@@ -9,7 +9,7 @@ public class CheckLengthFilter implements Filter {
     // вернет true, если длина строки меньше 4
     @Override
     public boolean apply(String pattern) {
-        return pattern.length() > 4;
+        return pattern.length() < 10;
     }
 
 }
