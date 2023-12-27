@@ -25,7 +25,7 @@ public class RatFun implements Function{
         if (!(x >= start && x <= end)) {
             throw new IllegalArgumentException("Out of Range");
         }
-        if (!(c == 0 && d == 0)) {
+        if (c == 0 && d == 0) {
             throw new IllegalArgumentException("Zero Detaminator");
         }
         return (a * x + b) / (c * x + d);
